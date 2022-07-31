@@ -1,0 +1,39 @@
+
+.staffReg, .carReg, .carEdit, .passportForm, .denyFormCls, .acceptFormCls, .confirmFormCls, .finishFormCls, .confirmFinishFormCls{
+    display: none;
+}
+
+.container-fluid{
+    background-color: #b9cebd;
+    height: 50px;
+}
+
+.returnDate{
+    width: 100px;
+}
+
+.available{
+    color: green;
+}
+
+.banned, #carLaterReturnMessage{
+    color: red;
+}
+
+.img{
+    width: 20px;
+    height: 15px;
+}
+
+.pdfImg{
+    width: 20px;
+    height: 30px;
+}
+
+.nameColum:hover{
+    background-color: #9ab3a0;
+}
+
+.costColum:hover{
+    background-color: #9ab3a0;
+}
