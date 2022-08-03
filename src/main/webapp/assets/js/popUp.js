@@ -39,11 +39,13 @@ function closeOrderTable() {
     document.getElementById("orderTable").style.display = "none";
 }
 
-function openCarEditForm(carId, brand, name, cost) {
+function openCarEditForm(carId, brand, name, cost, cls) {
     document.getElementById("editId").value = carId;
     document.getElementById("brandId").value = brand;
     document.getElementById("nameId").value = name;
     document.getElementById("costId").value = cost;
+    document.getElementById("carCls").value = cls;
+    document.getElementById("carCls").innerText = cls;
     if(document.getElementById("carEditForm").style.display == "block"){
         document.getElementById("carEditForm").style.display = "none";
     }else {

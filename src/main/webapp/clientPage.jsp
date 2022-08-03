@@ -56,7 +56,6 @@
                         <option value="D">D</option>
                         <option value="E">E</option>
                         <option value="F">F</option>
-                        <option value="SUV">SUV</option>
                         <option value="M">M</option>
                         <option value="S">S</option>
                     </select>

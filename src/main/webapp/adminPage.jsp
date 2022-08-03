@@ -70,7 +70,6 @@
                             <option value="D">D</option>
                             <option value="E">E</option>
                             <option value="F">F</option>
-                            <option value="SUV">SUV</option>
                             <option value="M">M</option>
                             <option value="S">S</option>
                         </select>
@@ -105,13 +104,13 @@
                     <div class="form-group">
                         <label class="control-label"><fmt:message key="th.carClass"/>:</label>
                         <select name="qualityClass">
+                            <option id="carCls" value="" selected></option>
                             <option value="A">A</option>
                             <option value="B">B</option>
                             <option value="C">C</option>
                             <option value="D">D</option>
                             <option value="E">E</option>
                             <option value="F">F</option>
-                            <option value="SUV">SUV</option>
                             <option value="M">M</option>
                             <option value="S">S</option>
                         </select>
@@ -254,7 +253,6 @@
                             <option value="D">D</option>
                             <option value="E">E</option>
                             <option value="F">F</option>
-                            <option value="SUV">SUV</option>
                             <option value="M">M</option>
                             <option value="S">S</option>
                         </select>
@@ -294,7 +292,7 @@
                                 <td>${car.isUsed()}</td>
                                 <td>${car.isDamaged()}</td>
 
-                                <td><button class="btn btn-primary btn-xs" onclick="openCarEditForm(${car.getId()}, '${car.getBrand()}', '${car.getName()}', ${car.getCost()})"><fmt:message key="label.edit"/></button></td>
+                                <td><button class="btn btn-primary btn-xs" onclick="openCarEditForm(${car.getId()}, '${car.getBrand()}', '${car.getName()}', ${car.getCost()}, '${car.getQualityClass()}')"><fmt:message key="label.edit"/></button></td>
                                 <td> <a href="controller?command=sendToCarDelete&delCarId=${car.getId()}"><button class="btn btn-danger btn-xs"><fmt:message key="label.delete"/></button></a> </td>
 
                             </tr>
