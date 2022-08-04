@@ -7,7 +7,6 @@
     }else{
         path += locale+".png";
 }%>
-${path}
 
 <img src=<%=path%> class="img">
 
