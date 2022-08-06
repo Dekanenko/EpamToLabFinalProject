@@ -120,6 +120,7 @@ function openConfirmFinishForm(orderId, carId, userId, passportId, lastDate, ret
     document.getElementById("finishedUserId").value = userId;
     document.getElementById("finishedPassportId").value = passportId;
     document.getElementById("driverOptionId").value = driverOption;
+    document.getElementById("returnDateId").innerText = returnDate;
 
     const lastD = new Date(lastDate);
     const returnD = new Date(returnDate);

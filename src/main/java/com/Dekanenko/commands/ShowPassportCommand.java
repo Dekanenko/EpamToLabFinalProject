@@ -10,10 +10,8 @@ public class ShowPassportCommand implements Command{
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) {
         PassportManager passportManager = PassportManager.getInstance();
-
         //put passport into request
         passportManager.getPassport(req, resp);
-
         Helper.forwarder(req, resp, "/userEdit.jsp");
     }
 }

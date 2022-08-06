@@ -1,5 +1,6 @@
 package com.Dekanenko.commands;
 
+import com.Dekanenko.helpClass.Helper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -17,10 +18,6 @@ public class SendToUserDeleteCommand implements Command{
         req.setAttribute("mark", 1);
         req.setAttribute("delId", req.getParameter("delUserId"));
         req.setAttribute("delPassportId", req.getParameter("delUserPassportId"));
-        try {
-            req.getRequestDispatcher("/deleteUser.jsp").forward(req, resp);
-        } catch (ServletException | IOException ex) {
-            log.error(ex.getMessage());
-        }
+        Helper.forwarder(req, resp, "/deleteUser.jsp");
     }
 }

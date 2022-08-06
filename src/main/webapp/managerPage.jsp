@@ -223,6 +223,13 @@
                     <input type="text" id="driverOptionId" name="driverOption" hidden value="">
 
                     <div class="form-group">
+                        <span><fmt:message key="span.carReturnDate"/>:</span>
+                        <span class="returnDate" id="returnDateId"></span>
+                    </div>
+
+                    <span id="carLaterReturnMessage" hidden><fmt:message key="label.car_returned_later"/></span>
+
+                    <div class="form-group">
                         <label class="control-label"><fmt:message key="label.car"/>:</label>
                         <br>
                         <input type="radio" name="damaged" value="false" onclick="notDamagedCar()" required>
@@ -237,7 +244,6 @@
                         <input class="form-control" type="number" name="fine" id="fineId" min="0" value="0" disabled required>
                     </div>
 
-                    <span id="carLaterReturnMessage" hidden><fmt:message key="label.car_returned_later"/></span>
                     <br>
                     <input class="btn btn-success btn-xs" type="submit" value="<fmt:message key='btn.confirm'/>">
                 </form>
