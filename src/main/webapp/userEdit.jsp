@@ -42,7 +42,7 @@
             <a href="/managePage"><button class="btn btn-primary btn-xs"><fmt:message key="btn.main_page"/></button></a>
             <a href="/controller?command=logOut"><button class="btn btn-primary btn-xs"><fmt:message key="header_jsp.btn.log_out"/></button></a>
 
-            <c:if test="${currentUser.getRoleId() == 4}">
+            <c:if test="${currentUser.getRoleId() == 4 && currentUser.getCash() >= 0}">
                 <a href="/controller?command=sendToUserDelete&delUserId=${currentUser.getId()}&delUserPassportId=${currentUser.getPassportId()}">
                     <button class="btn btn-primary btn-xs"><fmt:message key="label.delete"/></button></a>
                 <c:if test="${currentUser.getPassportId() <= 0}">

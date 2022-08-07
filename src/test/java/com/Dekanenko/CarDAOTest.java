@@ -146,6 +146,7 @@ public class CarDAOTest {
         when(mockResultSet.getDouble("cost")).thenReturn(car.getCost());
         when(mockResultSet.getBoolean("used")).thenReturn(car.isUsed());
         when(mockResultSet.getBoolean("damaged")).thenReturn(car.isDamaged());
+        when(mockResultSet.getDouble("repairCost")).thenReturn(car.getRepairCost());
     }
 
 }

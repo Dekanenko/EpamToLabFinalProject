@@ -290,7 +290,12 @@
                                 <td>${car.getName()}</td>
                                 <td><localeDoubleTag:localeDoubleTag locale="${currentLocale}" number="${car.getCost()}"/></td>
                                 <td>${car.isUsed()}</td>
-                                <td>${car.isDamaged()}</td>
+                                <td>${car.isDamaged()}
+                                    <c:if test="${car.isDamaged()}">
+                                        <br>
+                                        <localeDoubleTag:localeDoubleTag locale="${currentLocale}" number="${car.getRepairCost()}"/>
+                                    </c:if>
+                                </td>
 
                                 <td><button class="btn btn-primary btn-xs" onclick="openCarEditForm(${car.getId()}, '${car.getBrand()}', '${car.getName()}', ${car.getCost()}, '${car.getQualityClass()}')"><fmt:message key="label.edit"/></button></td>
                                 <td> <a href="controller?command=sendToCarDelete&delCarId=${car.getId()}"><button class="btn btn-danger btn-xs"><fmt:message key="label.delete"/></button></a> </td>

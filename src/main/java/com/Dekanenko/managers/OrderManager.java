@@ -488,10 +488,10 @@ public class OrderManager {
             log.debug("Free ordered car");
             carDAO.changeCarUsage(connection, carId, false);
 
-            //if car is damaged change its damaged status
+            //if car is damaged change its damaged status and add reparation cost
             if(damaged){
                 log.debug("Update damaged car ");
-                carDAO.changeCarDamage(connection, carId, damaged);
+                carDAO.changeCarDamage(connection, carId, damaged, fine);
             }
 
             //if order was with driver, free (unlock) the driver

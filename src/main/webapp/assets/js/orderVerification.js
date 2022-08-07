@@ -10,8 +10,6 @@ function dateCompare(){
     const date2NoTime = new Date(date2.getTime());
     const todayNoTime = new Date(today.getTime());
 
-    console.log(date2NoTime - date1NoTime);
-
     date1NoTime.setUTCHours(0,0,0,0);
     date2NoTime.setUTCHours(0,0,0,0);
     todayNoTime.setUTCHours(0,0,0,0);

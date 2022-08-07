@@ -12,6 +12,7 @@ public class Car implements Serializable {
     private double cost;
     boolean used;
     boolean damaged;
+    private double repairCost;
 
     public Car() {
     }
@@ -44,6 +45,10 @@ public class Car implements Serializable {
         return damaged;
     }
 
+    public double getRepairCost() {
+        return repairCost;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -70,6 +75,10 @@ public class Car implements Serializable {
 
     public void setDamaged(boolean damaged) {
         this.damaged = damaged;
+    }
+
+    public void setRepairCost(double repairCost) {
+        this.repairCost = repairCost;
     }
 
     @Override

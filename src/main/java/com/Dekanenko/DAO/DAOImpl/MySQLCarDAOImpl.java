@@ -57,6 +57,9 @@ public class MySQLCarDAOImpl implements CarDAO {
             preparedStatement.setDouble(++k, car.getCost());
             preparedStatement.setBoolean(++k, car.isUsed());
             preparedStatement.setBoolean(++k, car.isDamaged());
+            if(!car.isDamaged())
+                car.setRepairCost(0);
+            preparedStatement.setDouble(++k, car.getRepairCost());
             preparedStatement.setInt(++k, car.getId());
 
             preparedStatement.executeUpdate();
@@ -84,12 +87,13 @@ public class MySQLCarDAOImpl implements CarDAO {
     }
 
     @Override
-    public boolean changeCarDamage(Connection connection, int id, boolean damaged) throws SQLException {
+    public boolean changeCarDamage(Connection connection, int id, boolean damaged, double repairCost) throws SQLException {
         int k = 0;
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = connection.prepareStatement(CHANGE_CAR_DAMAGE);
             preparedStatement.setBoolean(++k, damaged);
+            preparedStatement.setDouble(++k, repairCost);
             preparedStatement.setInt(++k, id);
             preparedStatement.executeUpdate();
         }finally {
@@ -199,6 +203,7 @@ public class MySQLCarDAOImpl implements CarDAO {
         car.setCost(rs.getDouble("cost"));
         car.setUsed(rs.getBoolean("used"));
         car.setDamaged(rs.getBoolean("damaged"));
+        car.setRepairCost(rs.getDouble("repair_cost"));
     }
 
 }

@@ -20,11 +20,11 @@ public class MySQLQuery {
     }
 
     public static class CarQuery{
-        public static final String INSERT_CAR = "INSERT INTO car VALUES (DEFAULT, ?, ?, ?, ?, false, false);";
+        public static final String INSERT_CAR = "INSERT INTO car VALUES (DEFAULT, ?, ?, ?, ?, false, false, 0);";
         public static final String SELECT_ALL_CARS = "SELECT * FROM car";
-        public static final String UPDATE_CAR = "UPDATE car SET brand=?, class=?, name=?, cost=?, used=?, damaged=? WHERE id = ?";
+        public static final String UPDATE_CAR = "UPDATE car SET brand=?, class=?, name=?, cost=?, used=?, damaged=?, repair_cost=? WHERE id = ?";
         public static final String CHANGE_CAR_USAGE = "UPDATE car SET used = ? WHERE id = ?";
-        public static final String CHANGE_CAR_DAMAGE = "UPDATE car SET damaged=? WHERE id = ?";
+        public static final String CHANGE_CAR_DAMAGE = "UPDATE car SET damaged=?, repair_cost=? WHERE id = ?";
         public static final String DELETE_CAR = "DELETE FROM car WHERE id = ?";
         public static final String GET_CAR_BY_ID = "SELECT * FROM car WHERE id=?";
         public static final String SEARCH_CAR = "SELECT * FROM car WHERE brand LIKE ? AND class LIKE ? AND damaged LIKE ? AND used LIKE ?;";

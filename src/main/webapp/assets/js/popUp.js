@@ -115,6 +115,10 @@ function openFinishForm(orderId) {
 var fineCheck = 0;
 
 function openConfirmFinishForm(orderId, carId, userId, passportId, lastDate, returnDate, driverOption) {
+
+    document.getElementById("fineId").setAttribute('disabled', true);
+    document.getElementById("carLaterReturnMessage").setAttribute('hidden', true)
+
     document.getElementById("finishedOrderId").value = orderId;
     document.getElementById("finishedCarId").value = carId;
     document.getElementById("finishedUserId").value = userId;
@@ -125,8 +129,17 @@ function openConfirmFinishForm(orderId, carId, userId, passportId, lastDate, ret
     const lastD = new Date(lastDate);
     const returnD = new Date(returnDate);
 
+    const lastDNoTime = new Date(lastD.getTime());
+    const returnDNoTime = new Date(returnD.getTime());
+
+    lastDNoTime.setUTCHours(0,0,0,0);
+    returnDNoTime.setUTCHours(0,0,0,0);
+
+    console.log(lastDNoTime);
+    console.log(returnDNoTime);
+
     //compare the date of return with last order day
-    if(returnD > lastD){
+    if(returnDNoTime > lastDNoTime){
         fineCheck = 1;
         document.getElementById("fineId").removeAttribute('disabled');
         document.getElementById("carLaterReturnMessage").removeAttribute('hidden')

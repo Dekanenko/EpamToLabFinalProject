@@ -11,7 +11,7 @@ public interface CarDAO {
     public boolean insertCar(Connection connection, Car car) throws SQLException;
     public boolean updateCar(Connection connection, Car car) throws SQLException;
     public boolean changeCarUsage(Connection connection, int id, boolean inUsage) throws SQLException;
-    public boolean changeCarDamage(Connection connection, int id, boolean damaged) throws SQLException;
+    public boolean changeCarDamage(Connection connection, int id, boolean damaged, double repairCost) throws SQLException;
     public List<Car> getAllCars(Connection connection) throws SQLException, DAOException;
     public List<Car> searchCars(Connection connection, String brand, String qualityClass,
                                 String carDamageOption, String carUsageOption) throws SQLException;

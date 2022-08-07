@@ -1,12 +1,6 @@
--- MySQL Workbench Forward Engineering
-
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
-
--- -----------------------------------------------------
--- Schema enterpriseDB
--- -----------------------------------------------------
 
 -- -----------------------------------------------------
 -- Schema enterpriseDB
@@ -23,7 +17,7 @@ CREATE TABLE IF NOT EXISTS `enterpriseDB`.`role` (
     `role_status` VARCHAR(45) NOT NULL,
     PRIMARY KEY (`id`),
     UNIQUE INDEX `role_status_UNIQUE` (`role_status` ASC) VISIBLE)
-    ENGINE = InnoDB;
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -37,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `enterpriseDB`.`passport` (
     `unique_num` VARCHAR(45) NOT NULL,
     PRIMARY KEY (`id`),
     UNIQUE INDEX `passportId_UNIQUE` (`unique_num` ASC) VISIBLE)
-    ENGINE = InnoDB;
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -60,16 +54,16 @@ CREATE TABLE IF NOT EXISTS `enterpriseDB`.`user` (
     UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
     INDEX `fk_user_passport1_idx` (`passport_id` ASC) VISIBLE,
     CONSTRAINT `fk_user_role`
-    FOREIGN KEY (`role_id`)
+        FOREIGN KEY (`role_id`)
         REFERENCES `enterpriseDB`.`role` (`id`)
         ON DELETE NO ACTION
         ON UPDATE NO ACTION,
     CONSTRAINT `fk_user_passport1`
         FOREIGN KEY (`passport_id`)
-            REFERENCES `enterpriseDB`.`passport` (`id`)
-            ON DELETE NO ACTION
-            ON UPDATE NO ACTION)
-    ENGINE = InnoDB;
+        REFERENCES `enterpriseDB`.`passport` (`id`)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -84,8 +78,9 @@ CREATE TABLE IF NOT EXISTS `enterpriseDB`.`car` (
     `cost` DOUBLE NOT NULL,
     `used` TINYINT NOT NULL,
     `damaged` TINYINT NOT NULL,
+    `repair_cost` DOUBLE NULL,
     PRIMARY KEY (`id`))
-    ENGINE = InnoDB;
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -97,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `enterpriseDB`.`status` (
     `status_name` VARCHAR(45) NOT NULL,
     PRIMARY KEY (`id`),
     UNIQUE INDEX `status_name_UNIQUE` (`status_name` ASC) VISIBLE)
-    ENGINE = InnoDB;
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -121,20 +116,20 @@ CREATE TABLE IF NOT EXISTS `enterpriseDB`.`order` (
     INDEX `fk_order_passport1_idx` (`passport_id` ASC) VISIBLE,
     CONSTRAINT `fk_order_auto1`
         FOREIGN KEY (`car_id`)
-            REFERENCES `enterpriseDB`.`car` (`id`)
-            ON DELETE NO ACTION
-            ON UPDATE NO ACTION,
-        CONSTRAINT `fk_order_status1`
-            FOREIGN KEY (`status_id`)
-                REFERENCES `enterpriseDB`.`status` (`id`)
-                ON DELETE NO ACTION
-                ON UPDATE NO ACTION,
-        CONSTRAINT `fk_order_passport1`
-            FOREIGN KEY (`passport_id`)
-                REFERENCES `enterpriseDB`.`passport` (`id`)
-                ON DELETE NO ACTION
-                ON UPDATE NO ACTION)
-    ENGINE = InnoDB;
+        REFERENCES `enterpriseDB`.`car` (`id`)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION,
+    CONSTRAINT `fk_order_status1`
+        FOREIGN KEY (`status_id`)
+        REFERENCES `enterpriseDB`.`status` (`id`)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION,
+    CONSTRAINT `fk_order_passport1`
+        FOREIGN KEY (`passport_id`)
+        REFERENCES `enterpriseDB`.`passport` (`id`)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -148,15 +143,15 @@ CREATE TABLE IF NOT EXISTS `enterpriseDB`.`user_order` (
     INDEX `fk_user_has_order_order1_idx` (`order_id` ASC) VISIBLE,
     CONSTRAINT `fk_user_has_order_user1`
         FOREIGN KEY (`user_id`)
-            REFERENCES `enterpriseDB`.`user` (`id`)
-            ON DELETE CASCADE
-            ON UPDATE CASCADE,
+        REFERENCES `enterpriseDB`.`user` (`id`)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
     CONSTRAINT `fk_user_has_order_order1`
         FOREIGN KEY (`order_id`)
-            REFERENCES `enterpriseDB`.`order` (`id`)
-            ON DELETE CASCADE
-            ON UPDATE CASCADE)
-    ENGINE = InnoDB;
+        REFERENCES `enterpriseDB`.`order` (`id`)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE)
+ENGINE = InnoDB;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
